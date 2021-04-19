@@ -2,3 +2,13 @@
 ext.deps = [:]
 def versions = [:]
 versions.android_gradle_plugin = '3.5.1'
+
+versions.arouter_core = "1.0.2"
+versions.arouter_api = "1.5.0"
+versions.arouter_compiler = "1.2.2"
+
+def arouter = [:]
+arouter.core = "com.alibaba:arouter-register:$versions.arouter_core"
+arouter.api = "com.alibaba:arouter-api:$versions.arouter_api"
+arouter.compiler = "com.alibaba:arouter-compiler:$versions.arouter_compiler"
+deps.arouter = arouter

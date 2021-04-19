@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
  */
 public abstract class BaseMvpActivity<T extends BasePresenter> extends BaseActivity {
 
-    @NonNull
     protected T mPresenter;
 
     /**
@@ -22,6 +21,20 @@ public abstract class BaseMvpActivity<T extends BasePresenter> extends BaseActiv
         mPresenter = PresenterUtils.getBasePresenter(this.getClass());
         if (mPresenter == null) {
             throw new IllegalArgumentException("MVP activity must has presenter");
+        }
+    }
+
+    @Override
+    protected void init() {
+        super.init();
+        attachViewToPresenter(mPresenter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mPresenter != null) {
+            mPresenter.detachView();
         }
     }
 }

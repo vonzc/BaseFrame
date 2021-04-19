@@ -1,5 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
+    apply from: 'versions.gradle'
     repositories {
         google()
         jcenter()
@@ -36,6 +37,12 @@ subprojects {
             versionCode 1
             versionName "1.0"
 
+            javaCompileOptions {
+                annotationProcessorOptions {
+                    arguments = [AROUTER_MODULE_NAME: project.getName()]
+                }
+            }
+
             testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
             consumerProguardFiles "consumer-rules.pro"
         }
@@ -54,6 +61,10 @@ subprojects {
                 minifyEnabled true
                 proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             }
+        }
+
+        dependencies {
+            implementation deps.arouter.api
         }
     }
 }
