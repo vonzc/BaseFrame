@@ -1,0 +1,5 @@
+include ':business'
+include ':app',
+        ':basemvp',
+        ':common'
+rootProject.name = "BaseFrame"

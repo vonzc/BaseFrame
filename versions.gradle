@@ -1,0 +1,4 @@
+
+ext.deps = [:]
+def versions = [:]
+versions.android_gradle_plugin = '3.5.1'
