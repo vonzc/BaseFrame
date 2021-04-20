@@ -17,8 +17,9 @@ dependencies {
     implementation project(path: ':business')
     implementation project(path: ':common')
 
-//    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-//    implementation 'androidx.core:core-ktx:1.1.0'
+    //kotlin官方插件
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.1.0'
 
     //使用ARouter需要引入的库
     implementation deps.arouter.api

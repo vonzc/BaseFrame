@@ -15,7 +15,6 @@ import retrofit2.HttpException;
 /**
  * @author fengzhongcheng
  * @since 2021/4/19
- * @desc
  */
 public class NormalSubscriber<T> extends DisposableSubscriber<T> {
 
@@ -38,7 +37,6 @@ public class NormalSubscriber<T> extends DisposableSubscriber<T> {
     protected void onStart() {
         super.onStart();
         if (!AppUtil.isNetWorkAvailable(MyApp.getAppContext())) {
-//            final String netError = MyApp.getAppContext().getString(R.string.business_net_error);
             final String netError = "net wrong";
             UiHandler.post(() -> {
                 ToastUtil.showToastShort(netError);
@@ -74,7 +72,6 @@ public class NormalSubscriber<T> extends DisposableSubscriber<T> {
         } else if (e instanceof JsonParseException) {
             onError(JSON_PARSE_FAILED, e.getMessage());
         } else {
-//            onError(UNKNOWN, CalligraphyApp.getAPPContext().getString(R.string.business_unknown));
             onError(UNKNOWN, "");
         }
     }

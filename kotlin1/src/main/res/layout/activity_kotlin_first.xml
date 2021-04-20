@@ -4,17 +4,28 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:text="KotlinFirstActivity"
-        android:gravity="center"
-        android:textSize="35sp"
+        android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_to_First"/>
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="KotlinFirstActivity"
+        android:textSize="35sp" />
+
+    <TextView
+        android:id="@+id/tv_args"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title"
+        android:gravity="center"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/btn_to_First"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"/>
+        android:layout_below="@id/tv_args"
+        android:layout_centerInParent="true"
+        android:text="跳转到first模块" />
 
 </RelativeLayout>

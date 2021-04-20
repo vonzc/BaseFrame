@@ -34,9 +34,6 @@ public class GlobalErrorUtil {
                     if (error instanceof ConnectException) {
                         return Observable.error(new ConnectFailedException());
                     }
-                    if (error instanceof NullPointerException) {
-                        // return Observable.empty();
-                    }
                     return Observable.error(error);
                 },
                 (retry) -> {

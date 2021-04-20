@@ -11,10 +11,8 @@ public abstract class BaseMvpActivity<T extends BasePresenter> extends BaseActiv
 
     /**
      * 得到转换类型后的presenter
-     * 将View传给Presenter
-     * @param presenter p
      */
-    protected abstract void attachViewToPresenter(T presenter);
+    protected abstract void attachViewToPresenter();
 
     public BaseMvpActivity() {
         mPresenter = PresenterUtils.getBasePresenter(this.getClass());
@@ -26,7 +24,7 @@ public abstract class BaseMvpActivity<T extends BasePresenter> extends BaseActiv
     @Override
     protected void init() {
         super.init();
-        attachViewToPresenter(mPresenter);
+        attachViewToPresenter();
     }
 
     @Override

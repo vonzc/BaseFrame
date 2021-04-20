@@ -1,6 +1,5 @@
 package com.example.baseframe.kotlin1
 
-import androidx.core.content.ContextCompat
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.BaseFrame.common.Constants
 import com.example.baseframe.basemvp.BaseActivity
@@ -12,6 +11,7 @@ import kotlinx.android.synthetic.main.activity_kotlin_first.*
  */
 @Route(path = Constants.Kotlin1.Route.KOTLIN1)
 class KotlinFirstActivity : BaseActivity() {
+    private var mTitle: String? = ""
 
     override fun contentLayout(): Int {
         return R.layout.activity_kotlin_first
@@ -19,12 +19,16 @@ class KotlinFirstActivity : BaseActivity() {
 
     override fun init() {
         super.init()
-        btn_to_First.apply {
-            text = "跳转到first模块"
-            textSize = 20f
-            setOnClickListener {
-                navigate(Constants.First.Route.FIRST).navigation(this@KotlinFirstActivity)
-            }
+        processArgs()
+        tv_args.text = "接收到的参数为：$mTitle"
+        btn_to_First.setOnClickListener {
+            navigate(Constants.First.Route.FIRST).navigation(this@KotlinFirstActivity)
+        }
+    }
+
+    private fun processArgs() {
+        intent.extras?.let {
+            mTitle = it.getString(Constants.Kotlin1.KEY_TO_KOTLIN)
         }
     }
 }

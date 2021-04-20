@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.example.BaseFrame.common.Constants;
 import com.example.BaseFrame.common.ToastUtil;
 
 /**

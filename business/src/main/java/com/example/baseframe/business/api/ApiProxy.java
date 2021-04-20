@@ -12,7 +12,6 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
 import okhttp3.CacheControl;
-import okhttp3.Call;
 import okhttp3.Headers;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -41,15 +40,14 @@ public class ApiProxy {
     private static final String CHANNEL_TEST = "Test";
     private static final int APP_ID = 3001;
     private static final int HEADER_DEVICE_ANDROID = 0;
-    // will enable when Server done.
-    private static final boolean HTTPS_VERIFY = true;
+
     private static String DOMAIN_URL;
 
     private static Retrofit sRetrofit = null;
 
     static {
         //todo
-//        DOMAIN_URL = AppUtil.getMetaDataByKey(CalligraphyApp.getAPPContext(), KEY_SERVER_URL);
+        DOMAIN_URL = AppUtil.getMetaDataByKey(MyApp.getAppContext(), KEY_SERVER_URL);
     }
 
     public static final String API_URL = DOMAIN_URL + "/";
@@ -96,6 +94,7 @@ public class ApiProxy {
             return chain.proceed(request);
         };
 
+        //添加请求头
         Interceptor headerInterceptor = chain -> {
             //todo  打印本地用户id与token等信息
 //            String authorization = LocalAccountManager.getInstance().getAuthorization();
@@ -148,7 +147,7 @@ public class ApiProxy {
         // http cache, internal file system
         File httpCacheDirectory = new File(MyApp.getAppContext().getCacheDir(), "responses");
         /// external file system
-        // File httpCacheExDirectory = new File(CalligraphyApp.getAPPContext().getExternalCacheDir(), "responses");
+        // File httpCacheExDirectory = new File(MyApp.getAPPContext().getExternalCacheDir(), "responses");
         // max cache size: 100MB
         int cacheSize = 100 * 1024 * 1024;
         Cache cache = new Cache(httpCacheDirectory, cacheSize);
@@ -162,22 +161,7 @@ public class ApiProxy {
                 .addInterceptor(baseInterceptor)
                 .addInterceptor(headerInterceptor)
                 .addNetworkInterceptor(rewriteCacheControlInterceptor);
-        // setting SocketFactory for okhttp client to check Server validate
-        if (HTTPS_VERIFY) {
 
-//            ConnectionSpec spec = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
-//                    .allEnabledTlsVersions()
-//                    .allEnabledCipherSuites()
-//                    .build();
-            //todo 证书之类的
-//            final String[] certs = new String[] { SSLHelper.CER_HTTP_BIN_NAME,
-//                    SSLHelper.WX_CER_NAME, SSLHelper.CALLIGRAPHY_CER_NAME,
-//                    SSLHelper.SF_API_CER_NAME, SSLHelper.OSS_API_CER_NAME, SSLHelper.ALI_CDCC};
-//
-//            builder.connectionSpecs(Arrays.asList(spec, ConnectionSpec.CLEARTEXT))
-//                .sslSocketFactory(SSLHelper.getSSLFactory(certs), SSLHelper.getTrustManager())
-//                .hostnameVerifier(new AppHostnameVerifier());
-        }
         OkHttpClient okHttpClient = builder.build();
 
         return new Retrofit.Builder()
@@ -200,15 +184,5 @@ public class ApiProxy {
 
     public <T> T getInstanceApi(final Class<T> service) {
         return sRetrofit.create(service);
-    }
-
-    public OkHttpClient getClient() {
-        Call.Factory factory = sRetrofit.callFactory();
-        if (factory instanceof OkHttpClient) {
-            OkHttpClient oldClient = (OkHttpClient) factory;
-            // return oldClient.newBuilder().build();
-            return oldClient;
-        }
-        return null;
     }
 }
