@@ -36,10 +36,6 @@ public class RxPresenter<T extends BaseView> implements BasePresenter<T> {
                         return method.invoke(mViewReference.get(), args);
                     }
                 });
-        registerEvent();
-    }
-
-    protected void registerEvent() {
     }
 
     @Override

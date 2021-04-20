@@ -1,7 +1,5 @@
 package com.example.baseframe.basemvp;
 
-import androidx.annotation.NonNull;
-
 /**
  * @author fengzhongcheng
  * @since 2021/4/19
@@ -12,6 +10,7 @@ public abstract class BaseMvpActivity<T extends BasePresenter> extends BaseActiv
     protected T mPresenter;
 
     /**
+     * 得到转换类型后的presenter
      * 将View传给Presenter
      * @param presenter p
      */

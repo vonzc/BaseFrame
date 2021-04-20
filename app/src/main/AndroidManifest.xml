@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".first.FirstActivity"/>
+        <activity android:name=".kotlin1.KotlinFirstActivity"/>
     </application>
 
 </manifest>

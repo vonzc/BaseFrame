@@ -1,14 +1,19 @@
 
-ext.deps = [:]
 def versions = [:]
-versions.android_gradle_plugin = '3.5.1'
+versions.android_gradle_plugin = '4.0.1'
+versions.butterknife = "10.2.0"
 
-versions.arouter_core = "1.0.2"
-versions.arouter_api = "1.5.0"
-versions.arouter_compiler = "1.2.2"
+def deps = [:]
 
 def arouter = [:]
-arouter.core = "com.alibaba:arouter-register:$versions.arouter_core"
-arouter.api = "com.alibaba:arouter-api:$versions.arouter_api"
-arouter.compiler = "com.alibaba:arouter-compiler:$versions.arouter_compiler"
+arouter.core = "com.alibaba:arouter-register:1.0.2"
+arouter.api = "com.alibaba:arouter-api:1.5.0"
+arouter.compiler = "com.alibaba:arouter-compiler:1.2.2"
 deps.arouter = arouter
+
+def butterknife = [:]
+butterknife.core = "com.jakewharton:butterknife:$versions.butterknife"
+butterknife.compiler = "com.jakewharton:butterknife-compiler:$versions.butterknife"
+deps.butterknife = butterknife
+
+ext.deps = deps

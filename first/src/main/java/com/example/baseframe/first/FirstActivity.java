@@ -2,16 +2,18 @@ package com.example.baseframe.first;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.BaseFrame.common.Config;
-import com.example.BaseFrame.common.ToastUtil;
+import com.example.BaseFrame.common.Constants;
 import com.example.baseframe.basemvp.BaseMvpActivity;
 import com.example.baseframe.first.contract.FirstContract;
 import com.example.baseframe.first.presenter.FirstPresenter;
+
+import butterknife.ButterKnife;
 
 /**
  * @author fengzhongcheng
  * @since 2021/4/19
  */
-@Route(path = "/first/main")
+@Route(path = Constants.First.Route.FIRST)
 public class FirstActivity extends BaseMvpActivity<FirstPresenter> implements FirstContract.View {
 
     @Override
@@ -27,6 +29,7 @@ public class FirstActivity extends BaseMvpActivity<FirstPresenter> implements Fi
     @Override
     protected void init() {
         super.init();
+        ButterKnife.bind(this);
         mPresenter.getSomeData();
     }
 
@@ -35,6 +38,6 @@ public class FirstActivity extends BaseMvpActivity<FirstPresenter> implements Fi
         if (code != Config.API_SUCCEED_CODE) {
             return;
         }
-        ToastUtil.showToastShort("请求成功！");
+        toast("请求成功！");
     }
 }

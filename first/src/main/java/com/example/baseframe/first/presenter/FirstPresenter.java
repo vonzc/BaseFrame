@@ -22,6 +22,7 @@ public class FirstPresenter extends RxPresenter<FirstContract.View> implements F
 
     @Override
     public void attachView(FirstContract.View view) {
+        super.attachView(view);
         mModel = new LocalModel();
     }
 

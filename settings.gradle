@@ -1,3 +1,4 @@
+include ':kotlin1'
 include ':app',
         ':basemvp',
         ':common',
