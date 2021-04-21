@@ -2,6 +2,17 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+android {
+    sourceSets {
+        main {
+            //默认情况下，AndroidManifest.xml在src/main/文件夹下
+            if (runModule != "kotlin1") {
+                manifest.srcFile 'src/other/AndroidManifest.xml'
+            }
+        }
+    }
+}
+
 //在kotlin中使用ARouter需要进行额外配置，kapt为kotlin的注解处理器插件
 kapt {
     generateStubs = true
@@ -16,6 +27,7 @@ dependencies {
     implementation project(path: ':basemvp')
     implementation project(path: ':business')
     implementation project(path: ':common')
+    implementation project(path: ':style')
 
     //kotlin官方插件
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

@@ -1,5 +1,16 @@
 apply plugin: 'com.jakewharton.butterknife'
 
+android {
+    sourceSets {
+        main {
+            //默认情况下，AndroidManifest.xml在src/main/文件夹下
+            if (runModule != "app") {
+                manifest.srcFile 'src/other/AndroidManifest.xml'
+            }
+        }
+    }
+}
+
 dependencies {
     implementation project(path: ':basemvp')
     implementation project(path: ':business')

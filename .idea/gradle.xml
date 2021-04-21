@@ -18,6 +18,7 @@
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/first" />
             <option value="$PROJECT_DIR$/kotlin1" />
+            <option value="$PROJECT_DIR$/style" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

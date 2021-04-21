@@ -28,8 +28,8 @@ allprojects {
 }
 //给所有Child Project配置
 subprojects {
-    //除了app外都是library
-    if (name == "app") {
+    //除了runModule外都是library
+    if (name == runModule) {
         apply plugin: 'com.android.application'
     } else {
         apply plugin: 'com.android.library'
@@ -41,6 +41,10 @@ subprojects {
         buildToolsVersion "30.0.3"
 
         defaultConfig {
+            //只有需要运行的module有applicationId
+            if (name == runModule) {
+                applicationId "com.example.baseframe"
+            }
             minSdkVersion 21
             targetSdkVersion 30
             versionCode 1
