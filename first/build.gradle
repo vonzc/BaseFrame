@@ -1,11 +1,23 @@
 apply plugin: 'com.jakewharton.butterknife'
 
+android {
+    sourceSets {
+        main {
+            //默认情况下，AndroidManifest.xml在src/main/文件夹下
+            if (runModule != "first") {
+                manifest.srcFile 'src/other/AndroidManifest.xml'
+            }
+        }
+    }
+}
+
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
     implementation project(path: ':basemvp')
     implementation project(path: ':business')
     implementation project(path: ':common')
+    implementation project(path: ':style')
 
     //使用ARouter需要引入的库
     implementation deps.arouter.api

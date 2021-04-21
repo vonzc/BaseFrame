@@ -13,7 +13,7 @@ public class AppLog {
     private static boolean ENABLE_DEBUG = true;
     private static boolean ENABLE_ERROR = true;
 
-    public static String TAG = "SfTag";
+    public static String TAG = "von";
 
     public static void setTAG(String tag) {
         TAG = tag;

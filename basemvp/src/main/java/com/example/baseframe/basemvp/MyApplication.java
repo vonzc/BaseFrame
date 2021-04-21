@@ -1,4 +1,4 @@
-package com.example.baseframe;
+package com.example.baseframe.basemvp;
 
 import android.app.Application;
 

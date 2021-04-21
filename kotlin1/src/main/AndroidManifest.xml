@@ -1,13 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.baseframe.kotlin1">
     <application
+        android:name="com.example.baseframe.basemvp.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="kotlin1"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BaseFrame">
-
         <activity android:name=".KotlinFirstActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
